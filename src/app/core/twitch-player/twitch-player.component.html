@@ -1,0 +1,28 @@
+<div *ngIf="playerMetadata && playerMetadata.active" [@slideFade] class="player-container">
+    <div *ngIf="playerMetadata && !playerMetadata.position && playerMetadata.active" class="player-header">
+        <nav class="navigation">
+            <button (click)="joinStream()" aria-label="Bouton permettant de consulter le stream"
+                    class="navigation-button" mat-icon-button>
+                <mat-icon>fullscreen</mat-icon>
+            </button>
+            <button (click)="closeStream()" aria-label="Bouton permettant de fermer le stream" class="navigation-button"
+                    color="warn" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </nav>
+    </div>
+    <div *ngIf="playerMetadata && playerMetadata.active"
+         [classList]="playerMetadata && playerMetadata.position ? 'player-container' : 'player-container player-container--fixed'"
+         id="player-container">
+        <div *ngIf="isTranstionning || !loaded" [@fade] class="loader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <iframe (load)="loaded = true"
+                [classList]="!(isTranstionning || !loaded) ? 'player' : 'player player--transition'"
+                allowfullscreen="true" frameborder="0" scrolling="no"
+                src="https://player.twitch.tv/?channel=timtoobias"></iframe>
+    </div>
+</div>

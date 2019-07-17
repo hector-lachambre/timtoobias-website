@@ -1,0 +1,9 @@
+:host {
+    box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.4);
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    color: #8e98a0;
+}

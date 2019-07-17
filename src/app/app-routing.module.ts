@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { StreamPageComponent } from './pages/stream-page/stream-page.component';
+import { SupportPageComponent } from './pages/support-page/support-page.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+    {path: '', component: HomePageComponent, data: {animation: 'HomePage'}},
+    {path: 'stream', component: StreamPageComponent, data: {animation: 'StreamPage'}},
+    {path: 'support', component: SupportPageComponent, data: {animation: 'SupportPage'}}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

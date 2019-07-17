@@ -1,0 +1,36 @@
+:host {
+    position: relative;
+    display: block;
+    background-color: #242429;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content.content--large {
+    flex-direction: row;
+}
+
+.information {
+    flex: 1 1 auto;
+}
+
+.description {
+    max-width: 900px;
+}
+
+.aside {
+    flex: 0 0 280px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.margin-bottom {
+    margin-bottom: 32px;
+}

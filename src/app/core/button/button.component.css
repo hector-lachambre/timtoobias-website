@@ -1,0 +1,50 @@
+.button__frame {
+    --space-out: 24px;
+
+    position: relative;
+    padding: 8px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 600;
+
+    background: none;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.button__frame::before,
+.button__frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 12px;
+    opacity: 0.2;
+    filter: grayscale(1);
+
+    transition: all ease 0.3s;
+}
+
+.button__frame::before {
+    top: calc(-1 * var(--space-out));
+    left: calc(-1 * var(--space-out));
+    box-shadow: inset 3px 3px 0 0 var(--primary-color);
+}
+
+.button__frame::after {
+    right: calc(-1 * var(--space-out));
+    bottom: calc(-1 * var(--space-out));
+    box-shadow: inset -3px -3px 0 0 var(--primary-color);
+}
+
+.button__frame:hover {
+    --space-out: 8px;
+}
+
+.button__frame:hover::before,
+.button__frame:hover::after {
+    opacity: 1;
+    filter: grayscale(0);
+}

@@ -1,0 +1,83 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer
+                 (click)="closeSidenav()"
+                 [attr.role]="'dialog'"
+                 [mode]="'over'"
+                 class="sidenav"
+                 fixedInViewport="true">
+        <div class="sidenav-navigation">
+            <mat-toolbar>Pages</mat-toolbar>
+            <mat-nav-list class="sidenav-group sidenav-group-bottom">
+                <a href="#"
+                   mat-list-item
+                   routerLink="stream" routerLinkActive="active">
+                    <mat-icon matListIcon>live_tv</mat-icon>
+                    <span matLine>Le stream</span>
+                </a>
+                <a href="#"
+                   mat-list-item
+                   routerLink="support" routerLinkActive="active">
+                    <mat-icon matListIcon>live_help</mat-icon>
+                    <span matLine>Me soutenir</span>
+                </a>
+            </mat-nav-list>
+
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content #content (scroll)="scrollHandler($event)" class="background">
+        <header [ngClass]="{
+        'header': true,
+        'header--large': !(isHandset$ | async),
+        'header--retracted': !(isHandset$ | async) && scrollTop > 120
+      }">
+
+            <app-container class="container">
+                <div class="center">
+                    <button
+                        (click)="drawer.toggle()"
+                        *ngIf="isHandset$ | async"
+                        aria-label="Toggle sidenav"
+                        class="header__burger"
+                        mat-icon-button
+                        type="button">
+                        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                    </button>
+
+                    <nav *ngIf="!(isHandset$ | async)" class="header__nav header__nav--left">
+                        <a class="header__link" mat-button routerLink="stream">Le stream</a>
+                        <app-separator></app-separator>
+                        <a class="header__link" mat-button routerLink="support">Me soutenir</a>
+                    </nav>
+                    <a [classList]="(isHandset$ | async) ? 'header__logo' : 'header__logo header__logo--large'"
+                       routerLink="/">
+                        <div
+                            [classList]="(isHandset$ | async) ? 'header__frame' : 'header__frame header__frame--large'">
+                            <img alt="" class="header__avatar" src="assets/images/avatar_tim.jpg">
+                        </div>
+                    </a>
+                    <nav *ngIf="!(isHandset$ | async)" class="header__nav header__nav--right">
+                        <a class="header__icons" href="https://youtube.com/user/{{ name }}" target="_blank"><i
+                            class="fab fa-youtube"></i></a>
+                        <a class="header__icons" href="https://twitch.tv/{{ name }}" target="_blank"><i
+                            class="fab fa-twitch"></i></a>
+                        <a class="header__icons" href="https://twitter.com/{{ name }}" target="_blank"><i
+                            class="fab fa-twitter"></i></a>
+                    </nav>
+                </div>
+            </app-container>
+        </header>
+        <div
+            [classList]="(isHandset$ | async) ? 'header__placeholder' : 'header__placeholder header__placeholder--large'"></div>
+
+        <div class="renderer">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+
+        <app-partners></app-partners>
+
+        <app-copyright></app-copyright>
+
+        <app-twitch-player></app-twitch-player>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

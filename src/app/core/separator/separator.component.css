@@ -1,0 +1,45 @@
+:host {
+    padding: 16px;
+}
+
+.external-circle,
+.internal-circle {
+    border-radius: 50%;
+}
+
+.external-circle {
+    height: 8px;
+    width: 8px;
+    background-color: var(--primary-color);
+}
+
+.square {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-color);
+    transform: rotate(45deg);
+}
+
+.square::before,
+.square::after {
+    position: absolute;
+    content: '';
+    height: 32px;
+    width: 32px;
+    box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+.square::before {
+    left: -8px;
+    top: 8px;
+}
+
+.square::after {
+
+    left: 8px;
+    top: -8px;
+}

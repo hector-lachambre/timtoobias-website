@@ -1,0 +1,9 @@
+<div [classList]="(isHandset$ | async) ? 'container' : 'container container--large'">
+    <div class="player-container">
+        <div #player class="player-placeholder"></div>
+    </div>
+    <div [classList]="(isHandset$ | async) ? 'player-chat' : 'player-chat player-chat--large'" id="twitch-chat">
+        <iframe class="player-iframe" frameborder="0" scrolling="no"
+                src="https://www.twitch.tv/embed/timtoobias/chat?darkpopout"></iframe>
+    </div>
+</div>

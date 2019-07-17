@@ -1,0 +1,87 @@
+:host {
+    flex: 1 1 auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container.container--large {
+    flex-direction: row;
+}
+
+.player-container {
+    flex: 1 1 auto;
+}
+
+.player-placeholder {
+    height: 0;
+    padding-bottom: 56.25%;
+    background-color: #000;
+}
+
+.player-chat {
+    width: 100%;
+    background-color: #0f0e11;
+}
+
+.player-chat.player-chat--large {
+    flex: 0 0 27%;
+}
+
+.player-iframe {
+    display: block;
+    min-height: 400px;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 26%;
+        max-width: 26%;
+    }
+}
+
+@media (max-width: 1300px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 23%;
+        max-width: 23%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 22%;
+        max-width: 22%;
+    }
+}
+
+@media (max-width: 1500px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 21%;
+        max-width: 21%;
+    }
+}
+
+@media (max-width: 1650px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (max-width: 2000px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 20.31%;
+    }
+}
+
+@media (max-width: 20000px) {
+    .player-chat.player-chat--large {
+        flex: 0 0 18%;
+        max-width: 18%;
+    }
+}

@@ -1,0 +1,56 @@
+:host {
+    position: relative;
+}
+
+.description {
+    padding-top: 48px;
+    color: #D3DAE8;
+}
+
+.aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 1 50%;
+}
+
+.aside--large {
+    justify-content: flex-start;
+}
+
+.content {
+    flex: 0 0 auto;
+}
+
+.content--large {
+}
+
+.image {
+    max-width: 240px;
+    max-height: 128px;
+}
+
+.image--large {
+
+    padding-right: 32px;
+}
+
+.flex-column-reverse,
+.flex-row {
+    display: flex;
+    width: 100%;
+}
+
+.flex-column-reverse {
+    flex-direction: column-reverse;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.margin-top-32px {
+    margin-top: 32px;
+}

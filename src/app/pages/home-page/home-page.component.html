@@ -1,0 +1,18 @@
+<div>
+
+    <div [classList]="(isHandset$ | async) ? 'background' : 'background background--large'">
+        <app-button [classList]="(isHandset$ | async) ? 'button' : 'button button--large button--right'"
+                    [distanceAnimation]="-80"
+                    routerLink="stream">
+            STREAM
+        </app-button>
+        <app-separator [isLarge]="true"></app-separator>
+        <app-button [classList]="(isHandset$ | async) ? 'button' : 'button button--large'"
+                    [distanceAnimation]="80"
+                    routerLink="support">
+            ME SOUTENIR
+        </app-button>
+    </div>
+    <app-bio></app-bio>
+
+</div>

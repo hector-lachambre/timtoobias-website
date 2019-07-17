@@ -1,0 +1,16 @@
+<app-splitter></app-splitter>
+<app-section paddingVertical="48px">
+    <div class="responsive-container" [classList]="(isHandset$ | async) ? 'flex-column-reverse' : 'flex-row'">
+        <aside class="aside" [classList]="(isHandset$ | async) ? 'aside margin-top-32px' : 'aside aside--large'">
+            <img [classList]="(isHandset$ | async) ? 'image' : 'image image--large'"
+                 src="assets/images/logo_dofusbook.png" alt="">
+            <img [classList]="(isHandset$ | async) ? 'image' : 'image image--large'" src="assets/images/logo_twitch.svg"
+                 alt="">
+        </aside>
+        <div [classList]="(isHandset$ | async) ? 'content' : 'content content--large'">
+
+            <app-title>Ils me font confiance</app-title>
+        </div>
+
+    </div>
+</app-section>

@@ -1,0 +1,61 @@
+:host {
+    position: absolute;
+    top: -1px;
+    left: calc(50% - 99px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 198px;
+    height: 2px;
+    background-color: var(--primary-color);
+    z-index: 101;
+}
+
+.circle {
+    --large-circle-size: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid var(--primary-color);
+    width: var(--large-circle-size);
+    height: var(--large-circle-size);
+    border-radius: 50%;
+    box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.3);
+}
+
+.circle::before {
+    --small-circle-size: 0px;
+
+    content: '';
+    width: var(--small-circle-size);
+    height: var(--small-circle-size);
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.circle-left {
+    --large-circle-size: 16px;
+}
+
+.circle-left::before {
+    --small-circle-size: 11px;
+}
+
+.circle-middle {
+    --large-circle-size: 13px;
+
+    margin: 0 16px;
+}
+
+.circle-middle::before {
+    --small-circle-size: 8px;
+}
+
+.circle-right {
+    --large-circle-size: 20px;
+}
+
+.circle-right::before {
+    --small-circle-size: 15px;
+}

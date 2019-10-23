@@ -47,6 +47,9 @@ export class TwitchPlayerComponent implements OnInit {
     @HostBinding('style.position') position;
 
 
+    @HostBinding('style.z-index') zindex;
+
+
     public loaded = false;
 
 
@@ -78,6 +81,7 @@ export class TwitchPlayerComponent implements OnInit {
             if (pm.active && pm.position !== null) {
 
                 this.position = 'absolute';
+                this.zindex = 100;
 
                 this.top = `${ pm.position.y }px`;
                 this.left = `${ pm.position.x }px`;
@@ -87,6 +91,7 @@ export class TwitchPlayerComponent implements OnInit {
             } else if (pm.active && pm.position === null) {
 
                 this.position = 'fixed';
+                this.zindex = 102;
 
                 const width = 320;
                 const height = 180;

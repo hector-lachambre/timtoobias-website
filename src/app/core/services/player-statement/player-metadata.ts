@@ -5,7 +5,8 @@ export class PlayerMetadata {
 
     constructor(
         public active: boolean,
-        public position: ElementPosition
+        public position: ElementPosition,
+        public isHandset: boolean
     ) {
     }
 

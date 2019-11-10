@@ -41,12 +41,12 @@ a.active {
 
 @keyframes infinite-ripple {
     from {
-        transform: scale(0.9);
+        transform: rotate(45deg) scale(0.9);
         opacity: 1;
     }
 
     to {
-        transform: scale(1.1);
+        transform: rotate(45deg) scale(1.1);
         opacity: 0.4;
     }
 }
@@ -75,7 +75,7 @@ a.active {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url("../../../assets/images/header.svg");
+    background-image: url("../../../assets/images/header-background.svg");
     background-repeat: no-repeat;
     background-size: 100% 48px;
     filter: drop-shadow(0 2px 0px var(--primary-color)) drop-shadow(0 -4px 8px var(--primary-color));
@@ -143,12 +143,8 @@ a.active {
 }
 
 .header__frame {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 3px solid var(--primary-color);
-    background-color: var(--primary-color);
-    overflow: hidden;
+    width: 112px;
+    height: 112px;
     z-index: 3;
 }
 
@@ -171,24 +167,27 @@ a.active {
 .header__logo::after {
     content: '';
     position: absolute;
-    border-radius: 50%;
+    transform: rotate(45deg);
+    transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.header__logo::before {
+.header__logo::before { 
+    bottom: -32px;
     width: 88px;
     height: 88px;
-    /*background-color: rgba(27, 33, 45, 0.7);*/
     background-color: rgba(104, 116, 141, 0.7);
     z-index: 2;
     animation: infinite-ripple infinite alternate ease 2s 0.2s;
 }
 
 .header__logo--large::before {
-    width: 188px;
-    height: 188px;
+    bottom: -16px;
+    width: 120px;
+    height: 120px;
 }
 
 .header__logo::after {
+    bottom: -44px;
     width: 112px;
     height: 112px;
     background-color: rgba(58, 70, 91, 0.5);
@@ -199,8 +198,17 @@ a.active {
 
 
 .header__logo--large::after {
-    width: 254px;
-    height: 254px;
+    bottom: -27px;
+    width: 144px;
+    height: 144px;
+}
+
+.header.header--retracted .header__logo.header__logo--large::after {
+    bottom: -49px;
+}
+
+.header.header--retracted .header__logo.header__logo--large::before {
+    bottom: -36px;
 }
 
 .header__avatar {

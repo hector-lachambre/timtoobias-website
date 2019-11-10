@@ -4,6 +4,7 @@ import { MatSidenav, MatSidenavContent } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ScrollService } from '../services/scroll/scroll.service';
+import { BreakpointService } from '../services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -19,10 +20,7 @@ export class LayoutComponent implements OnInit {
 
     @ViewChild('content', {static: false})
     public content: MatSidenavContent;
-
-
-    public isHandset$: Observable<boolean>;
-
+    
 
     public scrollTop: number;
 
@@ -33,22 +31,20 @@ export class LayoutComponent implements OnInit {
     public name = 'timtoobias';
 
 
-    constructor(private bo: BreakpointObserver, public ss: ScrollService) {
-    }
+    public isHandset$: Observable<boolean>;
 
+
+    constructor(private bs: BreakpointService, public ss: ScrollService) {
+    }
 
     ngOnInit() {
-
-        this.isHandset$ = this.bo.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-                              .pipe(
-                                  map(result => result.matches)
-                              );
+        this.isHandset$ = this.bs.isHandset$;
+        window.addEventListener('scroll', () => this.scrollHandler())
     }
-
 
     public closeSidenav() {
 
-        this.isHandset$.subscribe(
+        this.bs.isHandset$.subscribe(
             bool => {
 
                 if (bool) {
@@ -58,9 +54,9 @@ export class LayoutComponent implements OnInit {
     }
 
 
-    public scrollHandler(e: Event) {
+    public scrollHandler() {
 
-        this.scrollTop = this.content.getElementRef().nativeElement.scrollTop;
+        this.scrollTop = window.scrollY;
 
         this.ss.scrollTop = this.scrollTop;
     }

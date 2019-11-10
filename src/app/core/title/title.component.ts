@@ -1,7 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { BreakpointService } from '../services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -11,19 +12,19 @@ import { map } from 'rxjs/operators';
 })
 export class TitleComponent implements OnInit {
 
+    @Input()
+    public center: boolean = false;
+
     public isHandset$: Observable<boolean>;
 
 
-    constructor(private bo: BreakpointObserver) {
+    constructor(private bs: BreakpointService) {
     }
 
 
     ngOnInit() {
 
-        this.isHandset$ = this.bo.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-                              .pipe(
-                                  map(result => result.matches)
-                              );
+        this.isHandset$ = this.bs.isHandset$
     }
 
 }

@@ -1,0 +1,10 @@
+<div class="card-content">
+    <div class="card-icon">
+        <i class="fab fa-{{ icon }}"></i></div>
+    <div class="card-value">{{ content }}</div>
+
+</div>
+<a [href]="link" target="blank" [style.background]="btnBackground" class="card-button" (mouseenter)="reflect($event)">
+    {{ btnContent }}
+    <span class="card-highlight"></span>
+</a>

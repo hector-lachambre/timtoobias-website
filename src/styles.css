@@ -4,32 +4,35 @@
 
 :root {
     --primary-dark: #17161A;
-    --primary-color: #FFB76F;
-    --secondary-dark: #252429;
+    --primary-color: rgb(255, 194, 133);
+    --secondary-dark: #1A1A1C;
+
+    --green: #96CB4C;
+    --red: #B83B27;
 }
 
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Lato";
     src: url("assets/fonts/Lato-Regular.ttf");
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Lato";
     src: url("assets/fonts/Lato-Bold.ttf");
     font-weight: 600;
 }
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Lato";
     src: url("assets/fonts/Lato-Black.ttf");
     font-weight: 700;
 }
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {

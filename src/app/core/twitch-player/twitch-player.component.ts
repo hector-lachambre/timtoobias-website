@@ -1,8 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, HostBinding, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayerMetadata } from '../services/player-statement/player-metadata';
 import { PlayerStatementService } from '../services/player-statement/player-statement.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { BreakpointService } from '../services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -31,23 +35,31 @@ export class TwitchPlayerComponent implements OnInit {
 
     public playerMetadata: PlayerMetadata;
 
+    public isHandset$: Observable<boolean>;
+
+    public isHandset: boolean;
 
     @HostBinding('style.top') top;
 
+    @HostBinding('style.right') right;
+
+    @HostBinding('style.bottom') bottom;
 
     @HostBinding('style.left') left;
 
 
-    @HostBinding('style.width.px') width;
+    @HostBinding('style.width') width;
 
 
-    @HostBinding('style.height.px') height;
+    @HostBinding('style.height') height;
 
 
     @HostBinding('style.position') position;
 
 
     @HostBinding('style.z-index') zindex;
+    
+    @HostBinding('style.paddingTop') paddingTop;
 
 
     public loaded = false;
@@ -56,13 +68,15 @@ export class TwitchPlayerComponent implements OnInit {
     public isTranstionning = false;
 
 
-    constructor(private pss: PlayerStatementService, private elRef: ElementRef, private r: Router) {
+    constructor(
+        private bs: BreakpointService, 
+        private pss: PlayerStatementService, 
+        private elRef: ElementRef, 
+        private r: Router) {
     }
 
 
     ngOnInit() {
-
-        console.log(this.elRef.nativeElement);
 
         this.elRef.nativeElement.addEventListener('transitionstart', () => {
 
@@ -73,6 +87,8 @@ export class TwitchPlayerComponent implements OnInit {
 
             setTimeout(() => this.isTranstionning = false, 50);
         });
+
+        this.isHandset$ = this.bs.isHandset$
 
         this.pss.getStatement().subscribe(pm => {
 
@@ -86,9 +102,23 @@ export class TwitchPlayerComponent implements OnInit {
                 this.top = `${ pm.position.y }px`;
                 this.left = `${ pm.position.x }px`;
 
-                this.width = pm.position.width;
-                this.height = pm.position.height;
-            } else if (pm.active && pm.position === null) {
+                this.width = `${pm.position.width}px`;
+                this.height = `${pm.position.height}px`;
+            } else if (pm.active && pm.position === null && pm.isHandset) {
+                this.position = 'fixed';
+                this.zindex = 102;
+
+                const padding = 16;
+                
+                this.width = '100%';
+                this.height = '56.25vw';
+
+                this.right = 0;
+                this.left = null;
+
+                this.bottom = 0;
+                this.top = null;
+            } else if (pm.active && pm.position === null && !pm.isHandset) {
 
                 this.position = 'fixed';
                 this.zindex = 102;
@@ -96,8 +126,8 @@ export class TwitchPlayerComponent implements OnInit {
                 const width = 320;
                 const height = 180;
 
-                this.width = width;
-                this.height = height;
+                this.width = `${width}px`;
+                this.height = `${height}px`;
 
                 this.top = `calc(100vh - ${ height + 16 }px)`;
                 this.left = `calc(100vw - ${ width + 33 }px)`;
@@ -113,6 +143,6 @@ export class TwitchPlayerComponent implements OnInit {
 
 
     closeStream() {
-        this.pss.getStatement().next(new PlayerMetadata(false, null));
+        this.pss.getStatement().next(new PlayerMetadata(false, null, this.isHandset));
     }
 }

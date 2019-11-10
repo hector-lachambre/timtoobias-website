@@ -1,0 +1,76 @@
+.section:nth-of-type(2n) {
+    background-color: var(--primary-dark);
+}
+
+.section:first-of-type {
+    background: url("/assets/images/blue-background.jpg");
+    background-size: cover;
+}
+
+.strong {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.flex-container-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-container-align--large {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.margin-bottom-48px {
+    margin-bottom: 48px;
+}
+
+.title {
+    margin-bottom: 80px;
+}
+
+.description-content {
+    height: 100%;
+}
+
+.description {
+    overflow: hidden;
+}
+
+.code-createur {
+    padding: 8px;
+    border-radius: 3px;
+    background-color: var(--primary-dark);
+    border: 1px solid var(--primary-color);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    letter-spacing: 4px;
+    color: inherit;
+    cursor: pointer;
+}
+
+.code-createur:hover {
+    background-color: var(--secondary-dark);
+}
+
+.info-text {
+    font-size: 14px;
+    font-style: italic;
+    opacity: 0.5;
+    color: #b6cee7;
+}
+
+.hidden {
+    display: none;
+}

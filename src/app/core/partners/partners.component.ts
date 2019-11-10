@@ -2,6 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { BreakpointService } from '../services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -14,16 +15,13 @@ export class PartnersComponent implements OnInit {
     public isHandset$: Observable<boolean>;
 
 
-    constructor(private bo: BreakpointObserver) {
+    constructor(private bs: BreakpointService) {
     }
 
 
     ngOnInit() {
 
-        this.isHandset$ = this.bo.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-                              .pipe(
-                                  map(result => result.matches)
-                              );
+        this.isHandset$ = this.bs.isHandset$
     }
 
 }

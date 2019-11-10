@@ -15,10 +15,16 @@
     line-height: 56px;
 }
 
-.title__content::after {
+.title__content:not(.title__content--center)::after {
     content: '';
     display: block;
-    height: 12px;
-    width: 48px;
+    height: 8px;
+    width: 32px;
     background-color: var(--primary-color);
+}
+
+.title__content.title__content--center {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
 }

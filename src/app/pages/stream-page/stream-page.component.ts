@@ -7,6 +7,7 @@ import { PlayerMetadata } from '../../core/services/player-statement/player-meta
 import { PlayerStatementService } from '../../core/services/player-statement/player-statement.service';
 import { ScrollService } from '../../core/services/scroll/scroll.service';
 import { TitleService } from '../../core/services/title/title.service';
+import { BreakpointService } from 'src/app/core/services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { TitleService } from '../../core/services/title/title.service';
 export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public isHandset$: Observable<boolean>;
+    public isXSmall$: Observable<boolean>;
+    public isXSmall: boolean;
 
 
     @ViewChild('player', {static: true})
@@ -24,7 +27,7 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     constructor(
-        private bo: BreakpointObserver,
+        private bs: BreakpointService,
         private pss: PlayerStatementService,
         private ss: ScrollService,
         private titleService: TitleService
@@ -36,10 +39,10 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.titleService.setSubTitle('Stream');
 
-        this.isHandset$ = this.bo.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-                              .pipe(
-                                  map(result => result.matches)
-                              );
+        this.isHandset$ = this.bs.isHandset$
+        this.isXSmall$ = this.bs.isXSmall$
+
+        this.isXSmall$.subscribe(b => this.isXSmall = b)
     }
 
 
@@ -53,7 +56,7 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnDestroy(): void {
 
-        this.pss.getStatement().next(new PlayerMetadata(true, null));
+        this.pss.getStatement().next(new PlayerMetadata(true, null, this.isXSmall));
 
         window.onresize = null;
     }
@@ -78,7 +81,8 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
                         offset.top,
                         pos.width,
                         pos.height
-                    )
+                    ),
+                    this.isXSmall
                 ));
         }, 100);
     }
@@ -86,11 +90,10 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private getOffset(el) {
 
-        const rect = el.getBoundingClientRect();
-        const scrollLeft = this.ss.scrollLeft;
-        const scrollTop = this.ss.scrollTop;
+        const offsetTop = el.offsetTop
+        const offsetLeft = el.offsetLeft
 
-        return {top: rect.top + scrollTop, left: rect.left + scrollLeft};
+        return {top: offsetTop, left: offsetLeft};
     }
 
 }

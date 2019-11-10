@@ -9,15 +9,11 @@
 
 .aside {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1 1 50%;
-}
-
-.aside--large {
-    justify-content: flex-start;
 }
 
 .content {
@@ -34,7 +30,7 @@
 
 .image--large {
 
-    padding-right: 32px;
+    /* padding-right: 32px; */
 }
 
 .flex-column-reverse,

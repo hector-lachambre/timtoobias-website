@@ -1,1 +1,112 @@
-<p>support-page works!</p>
+<app-section class="section" paddingVertical="96px">
+
+    <app-title [center]="true" class="title">Me soutenir en <strong class="strong">3</strong> secondes</app-title>
+    <div class="flex-container">
+        <app-social-card class="margin-bottom-48px" 
+        content="13,9 k" 
+        icon="youtube" 
+        btnContent="S'abonner"
+        [link]="ss.getYoutubeUrl()"
+        btnBackground="linear-gradient(to top, #ff0000, #ce1212)">
+        </app-social-card>
+        <app-social-card class="margin-bottom-48px" 
+        content="4 k" 
+        icon="twitter" 
+        btnContent="Me suivre" 
+        [link]="ss.getTwitterUrl()"
+        btnBackground="linear-gradient(to top, #1dcaff, #00aced)">
+        </app-social-card>
+        <app-social-card content="8 k" 
+        icon="twitch" 
+        btnContent="Me suivre"
+        [link]="ss.getTwitchUrl()" 
+        btnBackground="linear-gradient(to top, #6641e3, #5137bc)">
+        </app-social-card>
+    </div>
+</app-section>
+<app-splitter></app-splitter>
+<app-section class="section" paddingVertical="96px">
+    <app-title [center]="true" class="title">Me soutenir en <strong class="strong">2</strong> minutes</app-title>
+    <div [ngClass]="{'flex-container-align--large': !(isHandset$ | async), 'margin-bottom-48px': true, 'flex-container-align': true}">
+        <app-button-character (click)="presenter1()" link="#" image="/assets/images/tim-chara.png" content="Regarder une PUB" [reverse]="false"></app-button-character>
+        <app-separator [isLarge]="true"></app-separator>
+        <app-button-character (click)="presenter2()" link="#" image="/assets/images/iop-chara.png" content="Code créateur" [reverse]="true"></app-button-character>
+    </div>
+    <div>
+        <div *ngIf="presenter01" class="description" [@Slide]>
+            <div class="description-content">
+                Visualiser une pub est un moyen à ne pas négliger pour me soutenir.
+                <br> 
+                Vous pouvez <strong class="strong">regarder plusieurs publicités</strong> tous les jours.
+                <strong class="strong">Si seulement 10%</strong> d'entre vous y penses quelques jours dans la semaine, 
+                cela me permettrait de financer l'amélioration continuelle de la chaine. 
+                Votre temps est précieux, je n'ai pas de mot assez fort pour vous remercier de me l'accorder au quotidien.
+                <br>
+                Vous trouverez des pubs sur 
+                <a target="blank" class="strong" href="https://utip.io/timtoobias">uTip</a> et 
+                <a target="blank" class="strong" href="https://www.tipeeestream.com/timtoobias/donation">tipeeestream</a>
+            </div>
+        </div>
+        <div *ngIf="presenter02" class="description" [@Slide]>
+            <div class="description-content">
+                Lorsque vous achetez quelque chose avec mon code créateur une partie de votre achat m'est reversé, 
+                grâce à mes différents <strong class="strong">sites partenaires</strong> ! 
+                Ce moyen est idéal pour me faire une donation sans dépenser plus.
+                <br> <br>
+                A noter qu'il vous suffit simplement de cliquer sur mon lien <a class="strong" target="blank" href="https://www.instant-gaming.com/igr/timtoobias">Instant Gaming</a> pour être affilié pendant 30 jours. 
+                N'hésitez pas à repasser sur cette page afin de réactiver votre affiliation.
+                <br><br>
+                <button class="code-createur"
+                    (click)="copyToClipboard($event, 'Copié !')">
+                    EXDY-TIMTOOBIAS
+                </button>
+                <br>
+                <span class="info-text">Cliquez pour copier</span>
+                <br>
+                Ce code est valable sur toute la boutique Epic Games donc également sur Fortnite bien sûr.
+            </div>
+        </div>
+    </div>
+</app-section>
+<app-section class="section" paddingVertical="96px">
+    <app-title [center]="true" class="title">Me soutenir avec <strong class="strong">1</strong> don</app-title>
+    <div [ngClass]="{'flex-container-align--large': !(isHandset$ | async), 'margin-bottom-48px': true, 'flex-container-align': true}">
+        <app-button-character (click)="presenter3()" 
+            link="#" 
+            image="/assets/images/tim-logo.svg" 
+            content="Abonnement Twitch" 
+            [color]="'var(--red)'"
+            [reverse]="false">
+        </app-button-character>
+        <app-separator [isLarge]="true"></app-separator>
+        <app-button-character (click)="presenter4()" 
+            link="#" 
+            image="/assets/images/tim-money.png" 
+            content="Donation" 
+            [color]="'var(--green)'" 
+            [reverse]="true">
+        </app-button-character>
+    </div>
+    <div>
+        <div *ngIf="presenter03" class="description" [@Slide]>
+            <div class="description-content">
+                    Rejoins la communauté Twitch ! Pour 5€ par mois <strong class="strong">accède aux emotes</strong> (sur Twitch et Discord), 
+                    <strong class="strong">supprime toutes les PUB</strong> avant mes diffusions et <strong class="strong">obtient d'autres avantages</strong> pendant des évènements spéciaux.
+                    <br>
+                    A noter que pour vos 5€, 2€50 sont prélevés par twitch puis 50 centimes en frais d'entreprises.
+                    <br>
+                    <a class="strong" target="blank" href="https://www.twitch.tv/products/timtoobias/ticket">S'abonner !</a>
+            </div>
+        </div>
+        <div *ngIf="presenter04" class="description" [@Slide]>
+            <div class="description-content">
+                La donation est le meilleur des soutiens car il est le plus optimisé pour me soutenir,
+                je touche presque l'intégralité de votre don, seul les 20% de mes déclarations d'entreprise ainsi que des frais de transactions 
+                (autour de 1%) s'appliquent. <br>
+                N'hésitez pas à les faire pendant mes lives pour qu'ils s'affichent à l'écran (seuls les dons supérieur à 5€). 
+                Durant des événements spéciaux ils vous permettront même de gagner certains lots !
+                <a href="https://utip.io/timtoobias" target="blank" class="strong">uTip</a>
+            </div>
+        </div>
+    </div>
+</app-section>

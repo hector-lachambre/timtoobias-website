@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TitleService } from '../../core/services/title/title.service';
+import { BreakpointService } from 'src/app/core/services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HomePageComponent implements OnInit {
     public isHandset$: Observable<boolean>;
 
 
-    constructor(private bo: BreakpointObserver, private titleService: TitleService) {
+    constructor(private bs: BreakpointService, private titleService: TitleService) {
     }
 
 
@@ -23,10 +24,7 @@ export class HomePageComponent implements OnInit {
 
         this.titleService.setSubTitle('Accueil');
 
-        this.isHandset$ = this.bo.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-                              .pipe(
-                                  map(result => result.matches)
-                              );
+        this.isHandset$ = this.bs.isHandset$;
     }
 
 }

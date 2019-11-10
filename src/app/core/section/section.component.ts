@@ -6,17 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './section.component.html',
     styleUrls: ['./section.component.css']
 })
-export class SectionComponent implements OnInit {
+export class SectionComponent {
 
     @Input()
     public paddingVertical = '0px';
 
-
     constructor() {
     }
-
-
-    ngOnInit() {
-    }
-
 }

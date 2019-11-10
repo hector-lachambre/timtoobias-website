@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EnterAnimation } from '../../../../animations/animations';
+import { BreakpointService } from 'src/app/core/services/breakpoint/breakpoint.service';
 
 
 @Component({
@@ -26,15 +27,12 @@ export class BioComponent implements OnInit {
     public isHandset$: Observable<boolean>;
 
 
-    constructor(private bo: BreakpointObserver) {
+    constructor(private bs: BreakpointService) {
     }
 
 
     ngOnInit() {
 
-        this.isHandset$ = this.bo.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
-                              .pipe(
-                                  map(result => result.matches)
-                              );
+        this.isHandset$ = this.bs.isHandset$;
     }
 }

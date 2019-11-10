@@ -18,6 +18,10 @@ import { TitleService } from './services/title/title.service';
 import { SplitterComponent } from './splitter/splitter.component';
 import { TitleComponent } from './title/title.component';
 import { TwitchPlayerComponent } from './twitch-player/twitch-player.component';
+import { SocialCardComponent } from './social-card/social-card.component';
+import { BreakpointService } from './services/breakpoint/breakpoint.service';
+import { ButtonCharacterComponent } from './button-character/button-character.component';
+import { SocialService } from './services/social/social.service';
 
 
 @NgModule({
@@ -31,7 +35,9 @@ import { TwitchPlayerComponent } from './twitch-player/twitch-player.component';
         ButtonComponent,
         CopyrightComponent,
         SplitterComponent,
-        TwitchPlayerComponent
+        TwitchPlayerComponent,
+        SocialCardComponent,
+        ButtonCharacterComponent
     ],
     imports: [
         CommonModule,
@@ -45,9 +51,11 @@ import { TwitchPlayerComponent } from './twitch-player/twitch-player.component';
         SeparatorComponent,
         ButtonComponent,
         TitleComponent,
-        SplitterComponent
+        SplitterComponent,
+        SocialCardComponent,
+        ButtonCharacterComponent
     ],
-    providers: [PlayerStatementService, ScrollService, TitleService]
+    providers: [PlayerStatementService, ScrollService, TitleService, BreakpointService, SocialService]
 })
 export class CoreModule {
 }

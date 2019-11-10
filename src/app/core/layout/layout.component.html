@@ -24,7 +24,7 @@
 
         </div>
     </mat-sidenav>
-    <mat-sidenav-content #content (scroll)="scrollHandler($event)" class="background">
+    <mat-sidenav-content #content class="background">
         <header [ngClass]="{
         'header': true,
         'header--large': !(isHandset$ | async),
@@ -52,7 +52,7 @@
                        routerLink="/">
                         <div
                             [classList]="(isHandset$ | async) ? 'header__frame' : 'header__frame header__frame--large'">
-                            <img alt="" class="header__avatar" src="assets/images/avatar_tim.jpg">
+                            <img alt="" class="header__avatar" src="assets/images/tim-logo.svg">
                         </div>
                     </a>
                     <nav *ngIf="!(isHandset$ | async)" class="header__nav header__nav--right">

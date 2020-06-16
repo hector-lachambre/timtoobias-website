@@ -34,3 +34,41 @@
 .margin-bottom {
     margin-bottom: 32px;
 }
+
+
+.host {
+    position: relative;
+    display: block;
+    background-color: #ffffff;
+}
+
+.contenta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content.content--largea {
+    flex-direction: row;
+}
+
+.informationa {
+    flex: 1 1 auto;
+}
+
+.descriptiona {
+    max-width: 900px;
+}
+
+.asidea {
+    flex: 0 0 280px;
+}
+
+.imagea {
+    width: 100%;
+    height: auto;
+}
+
+.margin-bottoma {
+    margin-bottom: 32px;
+}

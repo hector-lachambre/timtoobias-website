@@ -3,7 +3,6 @@
         <div #player class="player-placeholder"></div>
     </div>
     <div [classList]="(isHandset$ | async) ? 'player-chat' : 'player-chat player-chat--large'" id="twitch-chat">
-        <iframe class="player-iframe" frameborder="0" scrolling="no"
-                src="https://www.twitch.tv/embed/timtoobias/chat?darkpopout"></iframe>
+        <iframe class="player-iframe" frameborder="0" scrolling="no" [src]="chatPopupUrl | safe: 'resourceUrl'"></iframe>
     </div>
 </div>

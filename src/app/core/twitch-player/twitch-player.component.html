@@ -23,6 +23,6 @@
         <iframe (load)="loaded = true"
                 [classList]="!(isTranstionning || !loaded) ? 'player' : 'player player--transition'"
                 allowfullscreen="true" frameborder="0" scrolling="no"
-                src="https://player.twitch.tv/?channel=timtoobias"></iframe>
+                [src]="twitchPlayerUrl | safe: 'resourceUrl'"></iframe>
     </div>
 </div>

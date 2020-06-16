@@ -1,13 +1,14 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, SecurityContext } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ElementPosition } from '../../core/services/player-statement/element-position';
 import { PlayerMetadata } from '../../core/services/player-statement/player-metadata';
 import { PlayerStatementService } from '../../core/services/player-statement/player-statement.service';
 import { ScrollService } from '../../core/services/scroll/scroll.service';
 import { TitleService } from '../../core/services/title/title.service';
 import { BreakpointService } from 'src/app/core/services/breakpoint/breakpoint.service';
+import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
     public isHandset$: Observable<boolean>;
     public isXSmall$: Observable<boolean>;
     public isXSmall: boolean;
+    public chatPopupUrl: string = `https://www.twitch.tv/embed/timtoobias/chat?darkpopout&parent=${environment.domain}`;
 
 
     @ViewChild('player', {static: true})
@@ -30,7 +32,8 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
         private bs: BreakpointService,
         private pss: PlayerStatementService,
         private ss: ScrollService,
-        private titleService: TitleService
+        private titleService: TitleService,
+        private sanitizer: DomSanitizer
     ) {
     }
 
@@ -61,6 +64,9 @@ export class StreamPageComponent implements OnInit, AfterViewInit, OnDestroy {
         window.onresize = null;
     }
 
+    public getChatUrl() {
+        return this.sanitizer.bypassSecurityTrustUrl(this.chatPopupUrl);
+    }
 
     private updateStatement() {
 

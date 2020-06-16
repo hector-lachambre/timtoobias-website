@@ -7,6 +7,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BreakpointService } from '../services/breakpoint/breakpoint.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -67,6 +68,7 @@ export class TwitchPlayerComponent implements OnInit {
 
     public isTranstionning = false;
 
+    public twitchPlayerUrl: string = `https://player.twitch.tv/?channel=timtoobias&parent=${environment.domain}`
 
     constructor(
         private bs: BreakpointService, 

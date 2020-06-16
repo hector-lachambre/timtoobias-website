@@ -22,6 +22,7 @@ import { SocialCardComponent } from './social-card/social-card.component';
 import { BreakpointService } from './services/breakpoint/breakpoint.service';
 import { ButtonCharacterComponent } from './button-character/button-character.component';
 import { SocialService } from './services/social/social.service';
+import { PresenterModule } from '../presenter/presenter.module';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SocialService } from './services/social/social.service';
         AppRoutingModule,
         BrowserAnimationsModule,
         LayoutModule,
-        MaterialModule
+        MaterialModule,
+        PresenterModule
     ], exports: [
         LayoutComponent,
         SectionComponent,

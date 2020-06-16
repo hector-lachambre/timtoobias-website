@@ -6,6 +6,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { StreamPageComponent } from './stream-page/stream-page.component';
 import { SupportPageComponent } from './support-page/support-page.component';
 import { MaterialModule } from 'src/vendor/material/material.module';
+import { PresenterModule } from '../presenter/presenter.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MaterialModule } from 'src/vendor/material/material.module';
     imports: [
         CommonModule,
         CoreModule,
-        MaterialModule
+        MaterialModule,
+        PresenterModule,
     ]
 })
 export class PagesModule {

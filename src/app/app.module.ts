@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { PresenterModule } from './presenter/presenter.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PagesModule } from './pages/pages.module';
   imports: [
     BrowserModule,
       CoreModule,
-      PagesModule
+      PagesModule,
+      PresenterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,13 @@
 :host {
     position: relative;
     display: block;
-    background-color: #242429;
+    background: url("/assets/images/home-background.jpg");
 }
-
 .content {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-
 .content.content--large {
     flex-direction: row;
 }
@@ -20,7 +18,9 @@
 
 .description {
     max-width: 900px;
+    margin-left: 220px;
 }
+
 
 .aside {
     flex: 0 0 280px;
@@ -33,6 +33,5 @@
 
 .margin-bottom {
     margin-bottom: 32px;
+    margin-left: 220px;
 }
-
-

@@ -1,0 +1,19 @@
+<app-section paddingVertical="48px">
+<article [classList]="(isHandset$ | async) ? 'content' : 'content content--large'">
+    <div class="information" [@EnterLeave]="{value: ':enter', params : {distance: '48px', delai: '0.3s'}}">
+        <app-title class="margin-bottom">Mon dernier article</app-title>
+        <div class="description">Titre1
+            <br><br>
+            ExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpe
+            ExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpe
+            ExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpe
+            ExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpe
+            <br><br>
+            Article écrit le 16/06/2016 par Clément
+        </div>
+    </div>
+    <aside [@EnterLeave]="{value: ':enter', params : {distance: '48px', delai: '0.3s'}}" class="aside"><img
+        class="image" src="assets/images/tim-chibi-charad.png" alt=""></aside>
+        
+</article>
+</app-section>

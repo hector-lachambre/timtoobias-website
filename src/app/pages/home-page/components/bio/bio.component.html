@@ -1,5 +1,4 @@
-<app-splitter></app-splitter>
-<app-section paddingVertical="48px">
+    <app-section paddingVertical="48px">
     <article [classList]="(isHandset$ | async) ? 'content' : 'content content--large'">
         <div class="information" [@EnterLeave]="{value: ':enter', params : {distance: '-48px', delai: '0.3s'}}">
 
@@ -14,30 +13,14 @@
                 Bonne navigation à tous !
             </div>
         </div>
+        
         <aside [@EnterLeave]="{value: ':enter', params : {distance: '48px', delai: '0.3s'}}" class="aside"><img
             class="image" src="assets/images/tim-chibi-chara.png" alt=""></aside>
 
     </article>
+  </app-section>
 
-    <app-splitter></app-splitter>
-    <app-section paddingVertical="48px">
-    <article [classList]="(isHandset$ | async) ? 'content' : 'content content--large'">
-        <div class="informationa" [@EnterLeave]="{value: ':enter', params : {distance: '48px', delai: '0.3s'}}">
+    
+   
 
-            <app-title class="margin-bottoma">Mon dernier article</app-title>
 
-            <div class="descriptiona">Titre1
-                <br><br>
-                ExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpe
-                <br><br>
-                ExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpeExplicationduparagrahpe
-                <br><br>
-                Article écrit le 16/06/2016 par Clément
-            </div>
-        </div>
-        <aside [@EnterLeave]="{value: ':enter', params : {distance: '48px', delai: '0.3s'}}" class="asidea"><img
-            class="imagea" src="assets/images/tim-chibi-chara.png" alt=""></aside>
-
-    </article>
-
-</app-section>

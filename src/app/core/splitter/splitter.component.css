@@ -1,7 +1,5 @@
 :host {
-    position: absolute;
-    top: -1px;
-    left: calc(50% - 99px);
+    position: relative;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -14,6 +12,9 @@
 
 .circle {
     --large-circle-size: 0px;
+    position: absolute;
+    top: calc(-1 * var(--large-circle-size) / 2);
+    left: calc(50% - var(--large-circle-size) / 2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,7 @@
 
 .circle-left {
     --large-circle-size: 16px;
+    transform: translateX(-32px);
 }
 
 .circle-left::before {
@@ -44,8 +46,6 @@
 
 .circle-middle {
     --large-circle-size: 13px;
-
-    margin: 0 16px;
 }
 
 .circle-middle::before {
@@ -54,6 +54,7 @@
 
 .circle-right {
     --large-circle-size: 20px;
+    transform: translateX(32px);
 }
 
 .circle-right::before {

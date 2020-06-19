@@ -47,6 +47,8 @@
                         <a class="header__link" mat-button routerLink="stream">Le stream</a>
                         <app-separator></app-separator>
                         <a class="header__link" mat-button routerLink="support">Me soutenir</a>
+                        <app-separator></app-separator>
+                        <a class="header__link" mat-button routerLink="articles">Articles</a>
                     </nav>
                     <a [classList]="(isHandset$ | async) ? 'header__logo' : 'header__logo header__logo--large'"
                        routerLink="/">

@@ -1,0 +1,21 @@
+<app-section paddingVertical="40px"></app-section>
+    <article [classList]="(isHandset$ | async) ? 'content' : 'content content--large'">
+        <div class="information" [@EnterLeave]="{value: ':enter', params : {distance: '-48px', delai: '0.3s'}}">
+
+            <app-title class="margin-bottom">Article1</app-title>
+          
+        
+            <div class="description">Article1Article1Article1Article1Article1Article1Article1Article1Article1
+                <br><br>
+                Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1
+                <br><br>
+                Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1Article1
+                <br><br>
+                Pour lire l'article en entier cliquer <a href='timtoobias.tv'>ici</a>
+            </div>
+        </div>
+        
+        <aside [@EnterLeave]="{value: ':enter', params : {distance: '48px', delai: '0.3s'}}" class="aside"><img
+            class="image" src="assets/images/tim-chibi-chara.png" alt=""></aside>
+
+    </article>

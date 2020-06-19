@@ -10,7 +10,7 @@ const routes: Routes = [
     {path: '', component: HomePageComponent, data: {animation: 'HomePage'}},
     {path: 'stream', component: StreamPageComponent, data: {animation: 'StreamPage'}},
     {path: 'support', component: SupportPageComponent, data: {animation: 'SupportPage'}},
-    {path: 'articles', component: ArticlesPageComponent, data: {animation: 'SupportPage'}}
+    {path: 'articles', component: ArticlesPageComponent, data: {animation: 'ArticlesPage'}}
 ];
 
 @NgModule({
